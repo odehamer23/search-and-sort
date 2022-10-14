@@ -16,6 +16,22 @@ public class Insertion
    */
   public static int[] sort(int[] arr) {
     // Your algorithm goes here!
+    int n = arr.length;
+    for (int i  = 1; i < n; i++) {
+        int j = i -1;
+        while (j >= 0 && arr[i] < arr[j]) {
+            arr[j + 1] = arr[j];
+            j--;        
+        }
+        int temp = arr[i];
+        int k = i;
+        if (k > j + 1) {
+            arr[k] = arr[k-1];
+            k--;
+        }
+        arr[k] = temp;
+    }
+    return arr;
 
   }
   
