@@ -23,17 +23,18 @@ public class Selection
     int minIndex;
     int N = arr.length;
     for (i = 0; i < N-1; i++) {
-        j = i;
+        j=i;
         min = arr[j];
         minIndex = j;
         temp = arr[j];
-        if (min > arr[j+1]) {
-            min = arr[j+1];
-            minIndex = j + 1;
+        for (j=i; j < N-1; j++) {
+            if (min > arr[j+1]) {
+                min = arr[j+1];
+                minIndex = j + 1;
+            }
         }
-        if (j < N-1) {
-            
-        }
+        arr[i] = min;
+        arr[minIndex] = temp;
     }
     return arr;
   }
