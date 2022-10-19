@@ -19,17 +19,21 @@ public class Merge
     int N = arr.length;
     if (N <= 1) {
         int middle = N/2;
-        int leftLength = middle;
-        int rightLength = N-leftLength;
+        int[] left = new int[middle];
+        int[] right = new int[N-middle];
         int i;
         for (i = 0; i < middle; i++) {
-            arr[i+leftLength] = arr[i];
+            left[i] = arr[i];
         }
         int rightIndex = 0;
         for (i = middle; i < N; i++) {
-            arr[rightIndex] = arr[i];
+            right[rightIndex] = arr[i];
             rightIndex++;
         }
+        sort(left);
+        sort(right);
+        
+        
         
     }
     return arr;
