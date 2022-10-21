@@ -17,7 +17,20 @@ public class Binary
     // Note... I know that the standard Java Arrays class has a method called
     // binarySearch.  If you use it for testing, but you need to implement the algorithm
     // to get the point!
-    
+    int low = 0;
+    int high = arr.length-1;
+    int mid;
+    while (low<=high) {
+        mid = (low+high)/2;
+        if (arr[mid] == target) {
+            return target;
+        } if (target < arr[mid] ) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return target;
   }
   
   public static void main(String[] args) {
@@ -27,7 +40,21 @@ public class Binary
       
     // Remember that a binary search requires a sorted array!
     // You can use one of your sorting methods here.
-    
+    int n = arr.length;
+    for (int i  = 1; i < n; i++) {
+        int j = i -1;
+        while (j >= 0 && arr[i] < arr[j]) {
+            arr[j + 1] = arr[j];
+            j--;        
+        }
+        int temp = arr[i];
+        int k = i;
+        if (k > j + 1) {
+            arr[k] = arr[k-1];
+            k--;
+        }
+        arr[k] = temp;
+    }
 
     ////////////////////////////////////////////////////////////
     // Do not change anything below this line!!
