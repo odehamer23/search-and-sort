@@ -19,19 +19,25 @@ public class Binary
     // to get the point!
     int low = 0;
     int high = arr.length-1;
-    int mid;
-    while (low<=high) {
-        mid = (low+high)/2;
-        if (arr[mid] == target) {
-            return target;
-        } if (target < arr[mid] ) {
-            high = mid - 1;
-        } else {
-            low = mid + 1;
-        }
-    }
-    return target;
+
+
+    int mid = (low + high)/2;  
+    //while low and high do not overlap
+    while(low <= high ){  
+        //if the mid < key, then key to be searched is in the low half of array
+        if ( arr[mid] > target ){  
+            low = mid + 1;     
+        }else if ( arr[mid] == target ){ 
+            //if key = element at mid, then print the location
+            return mid;
+        }else{  
+            //the key is to be searched in the second half of the array
+            high = mid - 1;  
+        }  
+        mid = (low + high)/2;  
   }
+  return -1;
+}
   
   public static void main(String[] args) {
     int[] arr = {53,85,93,25,39,27,42,5,24,45,33,51,5,80,4,7,91,
