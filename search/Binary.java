@@ -25,7 +25,7 @@ public class Binary
     //while low and high do not overlap
     while(low <= high ){  
         //if the mid < key, then key to be searched is in the low half of array
-        if ( arr[mid] > target ){  
+        if ( arr[mid] < target ){  
             low = mid + 1;     
         }else if ( arr[mid] == target ){ 
             //if key = element at mid, then print the location
@@ -46,28 +46,34 @@ public class Binary
       
     // Remember that a binary search requires a sorted array!
     // You can use one of your sorting methods here.
-    int n = arr.length;
-    for (int i  = 1; i < n; i++) {
-        int j = i -1;
-        while (j >= 0 && arr[i] < arr[j]) {
-            arr[j + 1] = arr[j];
-            j--;        
+    int i;
+    int j;
+    int min;
+    int temp;
+    int minIndex;
+    int N = arr.length;
+    for (i = 0; i < N-1; i++) {
+        j=i;
+        min = arr[j];
+        minIndex = j;
+        temp = arr[j];
+        for (j=i; j < N-1; j++) {
+            if (min > arr[j+1]) {
+                min = arr[j+1];
+                minIndex = j + 1;
+            }
         }
-        int temp = arr[i];
-        int k = i;
-        if (k > j + 1) {
-            arr[k] = arr[k-1];
-            k--;
-        }
-        arr[k] = temp;
+        arr[i] = min;
+        arr[minIndex] = temp;
     }
+    
 
     ////////////////////////////////////////////////////////////
     // Do not change anything below this line!!
     ////////////////////////////////////////////////////////////
     boolean isSorted = true;
-    for (int i=0; i<arr.length-1 && isSorted; i++) {
-      if (arr[i] > arr[i+1]) {
+    for (int i2=0; i2<arr.length-1 && isSorted; i2++) {
+      if (arr[i2] > arr[i2+1]) {
         isSorted = false;
       }
     }

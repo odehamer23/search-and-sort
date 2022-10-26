@@ -17,7 +17,7 @@ public class Merge
   public static int[] sort(int[] arr) {
     // Your algorithm goes here!
     int N = arr.length;
-    if (N <= 1) {
+    if (N > 1) {
         int middle = N/2;
         int[] left = new int[middle];
         int[] right = new int[N-middle];
@@ -32,6 +32,7 @@ public class Merge
         }
         sort(left);
         sort(right);
+        
         
         
         
